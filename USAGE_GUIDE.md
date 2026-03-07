@@ -6,6 +6,7 @@ Guia completo com prompts otimizados para todas as 68 ferramentas do servidor MC
 
 ## Sumário
 
+0. [Galeria de Resultados](#galeria-de-resultados)
 1. [Catálogo](#1-catálogo)
 2. [Coleções](#2-coleções)
 3. [Busca de Itens](#3-busca-de-itens)
@@ -22,6 +23,52 @@ Guia completo com prompts otimizados para todas as 68 ferramentas do servidor MC
 14. [Detecção de Mudanças](#14-detecção-de-mudanças)
 15. [Administração](#15-administração)
 16. [Workflows Combinados](#16-workflows-combinados)
+
+---
+
+## Galeria de Resultados
+
+Os mapas abaixo ilustram resultados reais obtidos com os prompts deste guia, demonstrando as principais capacidades do servidor MCP.
+
+### Biomas Brasileiros — `get_biome_bbox()`
+
+![Mapa dos Biomas Brasileiros](docs/images/map_biomes.png)
+
+### Busca Espacial — `search_items()`
+
+![Busca LANDSAT-16D-1 no Cerrado](docs/images/map_search_items.png)
+
+### Busca por Ponto — `search_by_point()`
+
+![Busca por ponto em Goiania](docs/images/map_search_by_point.png)
+
+### Tiles Mais Recentes — `search_latest_items()`
+
+![CBERS4-WFI-16D-2 tiles recentes no Cerrado](docs/images/map_latest_cbers.png)
+
+### Cobertura Nacional — `discover_collections_for_topic()`
+
+![Cobertura de colecoes no Brasil](docs/images/map_collections_overview.png)
+
+### Deteccao de Cicatrizes de Fogo — `plan_fire_scar_detection()`
+
+![Deteccao de fogo na Chapada dos Veadeiros](docs/images/map_fire_scar.png)
+
+### Filtragem de Series Temporais — `get_filtering_guide()`
+
+![Filtragem Savitzky-Golay e Whittaker](docs/images/sits_filtering.png)
+
+### Metricas Fenologicas — `plan_phenology_extraction()`
+
+![Metricas fenologicas NDVI Cerrado](docs/images/sits_phenology.png)
+
+### Classificacao LULC — `plan_classification_workflow()`
+
+![Classificacao LULC Cerrado com Random Forest](docs/images/sits_classification.png)
+
+### Workflow SITS Completo — `generate_sits_cube_code()`
+
+![Workflow SITS completo com 4 etapas](docs/images/sits_cube_workflow.png)
 
 ---
 
@@ -169,6 +216,10 @@ Compare LANDSAT-16D-1, CBERS4-WFI-16D-2 e S2_L2A-1 para análise multitemporal.
 
 Busca avançada cross-collection com filtros múltiplos.
 
+> **Resultado visual:**
+>
+> ![Busca LANDSAT-16D-1 no Cerrado](docs/images/map_search_items.png)
+
 **Prompts:**
 
 ```
@@ -188,6 +239,10 @@ Encontre composições do LANDSAT-16D-1 para a Amazônia entre junho e agosto de
 ### `search_by_point(lon, lat, collections, datetime_range, cloud_cover_max)`
 
 Busca itens que contêm uma coordenada específica.
+
+> **Resultado visual:**
+>
+> ![Busca por ponto em Goiania](docs/images/map_search_by_point.png)
 
 **Prompts:**
 
@@ -238,6 +293,10 @@ Liste todos os itens disponíveis para o tile BDC 013011 do LANDSAT-16D-1.
 ### `search_latest_items(collection_id, bbox, n, cloud_cover_max)`
 
 Os N itens mais recentes de uma coleção.
+
+> **Resultado visual:**
+>
+> ![CBERS4-WFI-16D-2 tiles recentes no Cerrado](docs/images/map_latest_cbers.png)
 
 **Prompts:**
 
@@ -563,6 +622,10 @@ Quais dados costeiros/oceânicos posso acessar via BDC?
 
 Bounding box WGS84 de biomas, estados e regiões.
 
+> **Resultado visual:**
+>
+> ![Biomas Brasileiros](docs/images/map_biomes.png)
+
 | Tipo | Valores aceitos |
 |---|---|
 | Biomas | `amazonia`, `cerrado`, `mata_atlantica`, `caatinga`, `pantanal`, `pampa` |
@@ -660,6 +723,10 @@ Preciso de dados para comparar desmatamento entre biomas. Quais coleções?
 ### `discover_collections_for_topic(topic)`
 
 Sugere coleções por tema em linguagem natural.
+
+> **Resultado visual:**
+>
+> ![Cobertura de colecoes no Brasil](docs/images/map_collections_overview.png)
 
 **Prompts:**
 
@@ -1049,6 +1116,10 @@ Planeje série temporal de NDVI para o Pantanal usando composições bimestrais 
 
 Guia de métodos de filtragem com snippets.
 
+> **Resultado visual:**
+>
+> ![Filtragem de series temporais NDVI](docs/images/sits_filtering.png)
+
 | Método | Descrição |
 |---|---|
 | `savitzky_golay` | Filtro polinomial local, preserva picos fenológicos |
@@ -1076,6 +1147,10 @@ Liste todos os métodos de filtragem disponíveis com prós e contras.
 ### `plan_phenology_extraction(collection_id, bbox_or_biome, band)`
 
 Métricas fenológicas: SOS, EOS, Peak, Amplitude, LOS.
+
+> **Resultado visual:**
+>
+> ![Metricas fenologicas NDVI Cerrado](docs/images/sits_phenology.png)
 
 **Prompts:**
 
@@ -1117,6 +1192,10 @@ Analise gaps do LANDSAT-16D-1 na bbox [-50, -15, -49, -14] de 2020 a 2023.
 
 Código R sits completo: sits_cube até sits_get_data.
 
+> **Resultado visual:**
+>
+> ![Workflow SITS completo](docs/images/sits_cube_workflow.png)
+
 **Prompts:**
 
 ```
@@ -1138,6 +1217,10 @@ Gere código sits para cubo de dados bimestral Landsat na Amazônia.
 ### `plan_classification_workflow(region, start_year, end_year, classes, algorithm)`
 
 Plano completo de classificação em 9 etapas com código sits e Python.
+
+> **Resultado visual:**
+>
+> ![Classificacao LULC Cerrado](docs/images/sits_classification.png)
 
 | Algoritmo | Chave |
 |---|---|
@@ -1300,6 +1383,10 @@ Planeje detecção de mudanças via anomalia NDVI para monitorar seca no semiár
 ### `plan_fire_scar_detection(region, event_date)`
 
 Detecção de cicatrizes de fogo com dNBR e severidade USGS.
+
+> **Resultado visual:**
+>
+> ![Deteccao de fogo na Chapada dos Veadeiros](docs/images/map_fire_scar.png)
 
 **Prompts:**
 
