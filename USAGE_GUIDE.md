@@ -70,6 +70,38 @@ Os mapas abaixo ilustram resultados reais obtidos com os prompts deste guia, dem
 
 ![Workflow SITS completo com 4 etapas](docs/images/sits_cube_workflow.png)
 
+### Catalogo de Mosaicos — `list_collections(category="mosaic")`
+
+![7 colecoes de mosaicos BDC](docs/images/map_mosaics_overview.png)
+
+### Mosaico Landsat Amazonia — `mosaic-landsat-amazon-3m-1`
+
+![Mosaico Landsat da Amazonia com 132 tiles](docs/images/map_mosaic_amazon_landsat.png)
+
+### Mosaico Sentinel-2 Amazonia — `mosaic-s2-amazon-3m-1`
+
+![Mosaico Sentinel-2 da Amazonia com 916 tiles](docs/images/map_mosaic_amazon_s2.png)
+
+### Mosaico Landsat Brasil — `mosaic-landsat-brazil-6m-1`
+
+![Mosaico Landsat do Brasil inteiro](docs/images/map_mosaic_brazil.png)
+
+### Mosaicos Regionais — Sao Paulo, Yanomami e Paraiba
+
+![Mosaicos regionais do BDC](docs/images/map_mosaics_regional.png)
+
+### Compostos Landsat — True Color, False Color, Agriculture
+
+![Compostos Landsat True Color, False Color e Agriculture no Cerrado](docs/images/sat_landsat_composites.png)
+
+### Compostos CBERS-4 — True Color, False Color
+
+![Compostos CBERS-4 WFI True Color e False Color no Cerrado](docs/images/sat_cbers4_composites.png)
+
+### Compostos Sentinel-2 — True Color, False Color, Agriculture
+
+![Compostos Sentinel-2 True Color, False Color e Agriculture no Cerrado](docs/images/sat_sentinel2_composites.png)
+
 ---
 
 ## 1. Catálogo
@@ -127,6 +159,10 @@ Resuma as funcionalidades avançadas da STAC API do INPE.
 ### `list_collections(category, satellite, biome, data_type, keyword, limit)`
 
 Lista coleções com filtros combinados.
+
+> **Resultado visual (mosaicos):**
+>
+> ![Catalogo de mosaicos BDC](docs/images/map_mosaics_overview.png)
 
 | Parâmetro | Valores |
 |---|---|
@@ -534,6 +570,10 @@ Quais sensores do CBERS-4 posso usar? PAN5M, MUX, WFI — qual a diferença?
 O CBERS-2B ainda tem dados disponíveis no BDC?
 ```
 
+> **Resultado visual:** Compostos CBERS-4 WFI com imagens reais — True Color e False Color no Cerrado (setembro/2023, 0% de nuvens):
+>
+> ![Compostos CBERS-4](docs/images/sat_cbers4_composites.png)
+
 ---
 
 ### `get_sentinel2_collections()`
@@ -550,6 +590,10 @@ Liste as coleções Sentinel-2 — imagens brutas, cubos e mosaicos.
 Existe cubo de dados Sentinel-2 no BDC?
 ```
 
+> **Resultado visual:** Compostos Sentinel-2 com imagens reais — True Color, False Color e Agriculture no Cerrado (setembro/2023):
+>
+> ![Compostos Sentinel-2](docs/images/sat_sentinel2_composites.png)
+
 ---
 
 ### `get_landsat_collections()`
@@ -565,6 +609,10 @@ Liste todos os produtos Landsat — brutas, data cubes e mosaicos.
 
 O BDC tem composições Landsat de 16 dias? E bimestrais?
 ```
+
+> **Resultado visual:** Compostos Landsat com imagens reais — True Color, False Color e Agriculture no Cerrado (setembro/2023, 0.06% de nuvens):
+>
+> ![Compostos Landsat](docs/images/sat_landsat_composites.png)
 
 ---
 

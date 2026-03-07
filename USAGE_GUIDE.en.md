@@ -6,6 +6,7 @@ Complete guide with optimized prompts for all 68 tools of the MCP server. Each s
 
 ## Table of Contents
 
+0. [Results Gallery](#results-gallery)
 1. [Catalog](#1-catalog)
 2. [Collections](#2-collections)
 3. [Item Search](#3-item-search)
@@ -22,6 +23,84 @@ Complete guide with optimized prompts for all 68 tools of the MCP server. Each s
 14. [Change Detection](#14-change-detection)
 15. [Administration](#15-administration)
 16. [Combined Workflows](#16-combined-workflows)
+
+---
+
+## Results Gallery
+
+The maps below illustrate real results obtained with the prompts from this guide, showcasing the main capabilities of the MCP server.
+
+### Brazilian Biomes — `get_biome_bbox()`
+
+![Brazilian Biomes Map](docs/images/map_biomes.png)
+
+### Spatial Search — `search_items()`
+
+![LANDSAT-16D-1 search in the Cerrado](docs/images/map_search_items.png)
+
+### Point Search — `search_by_point()`
+
+![Point search in Goiania](docs/images/map_search_by_point.png)
+
+### Latest Tiles — `search_latest_items()`
+
+![CBERS4-WFI-16D-2 latest tiles in Cerrado](docs/images/map_latest_cbers.png)
+
+### National Coverage — `discover_collections_for_topic()`
+
+![Collection coverage in Brazil](docs/images/map_collections_overview.png)
+
+### Fire Scar Detection — `plan_fire_scar_detection()`
+
+![Fire detection in Chapada dos Veadeiros](docs/images/map_fire_scar.png)
+
+### Time Series Filtering — `get_filtering_guide()`
+
+![Savitzky-Golay and Whittaker filtering](docs/images/sits_filtering.png)
+
+### Phenological Metrics — `plan_phenology_extraction()`
+
+![NDVI phenological metrics for Cerrado](docs/images/sits_phenology.png)
+
+### LULC Classification — `plan_classification_workflow()`
+
+![LULC classification in Cerrado with Random Forest](docs/images/sits_classification.png)
+
+### Complete SITS Workflow — `generate_sits_cube_code()`
+
+![Complete SITS workflow with 4 stages](docs/images/sits_cube_workflow.png)
+
+### Mosaic Catalog — `list_collections(category="mosaic")`
+
+![7 BDC mosaic collections](docs/images/map_mosaics_overview.png)
+
+### Landsat Amazon Mosaic — `mosaic-landsat-amazon-3m-1`
+
+![Landsat Amazon mosaic with 132 tiles](docs/images/map_mosaic_amazon_landsat.png)
+
+### Sentinel-2 Amazon Mosaic — `mosaic-s2-amazon-3m-1`
+
+![Sentinel-2 Amazon mosaic with 916 tiles](docs/images/map_mosaic_amazon_s2.png)
+
+### Landsat Brazil Mosaic — `mosaic-landsat-brazil-6m-1`
+
+![Full Brazil Landsat mosaic](docs/images/map_mosaic_brazil.png)
+
+### Regional Mosaics — Sao Paulo, Yanomami and Paraiba
+
+![BDC regional mosaics](docs/images/map_mosaics_regional.png)
+
+### Landsat Composites — True Color, False Color, Agriculture
+
+![Landsat True Color, False Color and Agriculture composites in Cerrado](docs/images/sat_landsat_composites.png)
+
+### CBERS-4 Composites — True Color, False Color
+
+![CBERS-4 WFI True Color and False Color composites in Cerrado](docs/images/sat_cbers4_composites.png)
+
+### Sentinel-2 Composites — True Color, False Color, Agriculture
+
+![Sentinel-2 True Color, False Color and Agriculture composites in Cerrado](docs/images/sat_sentinel2_composites.png)
 
 ---
 
@@ -80,6 +159,10 @@ Summarize the advanced features of the INPE STAC API.
 ### `list_collections(category, satellite, biome, data_type, keyword, limit)`
 
 Lists collections with combined filters.
+
+> **Visual result (mosaics):**
+>
+> ![BDC mosaic catalog](docs/images/map_mosaics_overview.png)
 
 | Parameter | Values |
 |---|---|
@@ -169,6 +252,10 @@ Compare LANDSAT-16D-1, CBERS4-WFI-16D-2, and S2_L2A-1 for multitemporal analysis
 
 Advanced cross-collection search with multiple filters.
 
+> **Visual result:**
+>
+> ![LANDSAT-16D-1 search in the Cerrado](docs/images/map_search_items.png)
+
 **Prompts:**
 
 ```
@@ -188,6 +275,10 @@ Find LANDSAT-16D-1 composites for the Amazon between June and August 2021.
 ### `search_by_point(lon, lat, collections, datetime_range, cloud_cover_max)`
 
 Searches for items containing a specific coordinate.
+
+> **Visual result:**
+>
+> ![Point search in Goiania](docs/images/map_search_by_point.png)
 
 **Prompts:**
 
@@ -238,6 +329,10 @@ List all available items for BDC tile 013011 of LANDSAT-16D-1.
 ### `search_latest_items(collection_id, bbox, n, cloud_cover_max)`
 
 The N most recent items from a collection.
+
+> **Visual result:**
+>
+> ![CBERS4-WFI-16D-2 latest tiles in Cerrado](docs/images/map_latest_cbers.png)
 
 **Prompts:**
 
@@ -475,6 +570,10 @@ Which CBERS-4 sensors can I use? PAN5M, MUX, WFI — what is the difference?
 Does CBERS-2B still have data available in BDC?
 ```
 
+> **Visual result:** CBERS-4 WFI real imagery composites — True Color and False Color over Cerrado (September/2023, 0% cloud cover):
+>
+> ![CBERS-4 Composites](docs/images/sat_cbers4_composites.png)
+
 ---
 
 ### `get_sentinel2_collections()`
@@ -491,6 +590,10 @@ List the Sentinel-2 collections — raw images, cubes, and mosaics.
 Is there a Sentinel-2 data cube in BDC?
 ```
 
+> **Visual result:** Sentinel-2 real imagery composites — True Color, False Color, and Agriculture over Cerrado (September/2023):
+>
+> ![Sentinel-2 Composites](docs/images/sat_sentinel2_composites.png)
+
 ---
 
 ### `get_landsat_collections()`
@@ -506,6 +609,10 @@ List all Landsat products — raw, data cubes, and mosaics.
 
 Does BDC have 16-day Landsat composites? And bimonthly?
 ```
+
+> **Visual result:** Landsat real imagery composites — True Color, False Color, and Agriculture over Cerrado (September/2023, 0.06% cloud cover):
+>
+> ![Landsat Composites](docs/images/sat_landsat_composites.png)
 
 ---
 
@@ -562,6 +669,10 @@ What coastal/ocean data can I access via BDC?
 ### `get_biome_bbox(biome)`
 
 WGS84 bounding box for biomes, states, and regions.
+
+> **Visual result:**
+>
+> ![Brazilian Biomes](docs/images/map_biomes.png)
 
 | Type | Accepted values |
 |---|---|
@@ -660,6 +771,10 @@ I need data to compare deforestation across biomes. Which collections?
 ### `discover_collections_for_topic(topic)`
 
 Suggests collections by topic in natural language.
+
+> **Visual result:**
+>
+> ![Collection coverage in Brazil](docs/images/map_collections_overview.png)
 
 **Prompts:**
 
@@ -1049,6 +1164,10 @@ Plan an NDVI time series for the Pantanal using bimonthly Landsat composites.
 
 Filtering methods guide with snippets.
 
+> **Visual result:**
+>
+> ![NDVI time series filtering](docs/images/sits_filtering.png)
+
 | Method | Description |
 |---|---|
 | `savitzky_golay` | Local polynomial filter, preserves phenological peaks |
@@ -1076,6 +1195,10 @@ List all available filtering methods with pros and cons.
 ### `plan_phenology_extraction(collection_id, bbox_or_biome, band)`
 
 Phenological metrics: SOS, EOS, Peak, Amplitude, LOS.
+
+> **Visual result:**
+>
+> ![NDVI phenological metrics for Cerrado](docs/images/sits_phenology.png)
 
 **Prompts:**
 
@@ -1117,6 +1240,10 @@ Analyze gaps of LANDSAT-16D-1 in bbox [-50, -15, -49, -14] from 2020 to 2023.
 
 Complete R sits code: sits_cube to sits_get_data.
 
+> **Visual result:**
+>
+> ![Complete SITS workflow](docs/images/sits_cube_workflow.png)
+
 **Prompts:**
 
 ```
@@ -1138,6 +1265,10 @@ Generate sits code for a bimonthly Landsat data cube in the Amazon.
 ### `plan_classification_workflow(region, start_year, end_year, classes, algorithm)`
 
 Complete classification plan in 9 steps with sits and Python code.
+
+> **Visual result:**
+>
+> ![LULC classification in Cerrado](docs/images/sits_classification.png)
 
 | Algorithm | Key |
 |---|---|
@@ -1300,6 +1431,10 @@ Plan change detection via NDVI anomaly for monitoring drought in the northeaster
 ### `plan_fire_scar_detection(region, event_date)`
 
 Fire scar detection with dNBR and USGS severity classification.
+
+> **Visual result:**
+>
+> ![Fire detection in Chapada dos Veadeiros](docs/images/map_fire_scar.png)
 
 **Prompts:**
 
